@@ -68,4 +68,5 @@ class ActivityDemoApplicationTests {
             log.info("{}完成了{}任务,任务Id：{},流程实例Id：", task.getAssignee(), task.getName(), task.getProcessInstanceId());
         }
     }
+
 }
