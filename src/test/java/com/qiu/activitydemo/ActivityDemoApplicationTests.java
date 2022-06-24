@@ -54,6 +54,7 @@ class ActivityDemoApplicationTests {
         ProcessInstance processInstance = runtimeService.startProcessInstanceByKey("myEvection");
         log.info("流程实例Id：{},流程实例名称：{}, 流程定义Id：{}", processInstance.getProcessInstanceId(),
                 processInstance.getName(), processInstance.getProcessDefinitionId());
+
     }
 
     /**
