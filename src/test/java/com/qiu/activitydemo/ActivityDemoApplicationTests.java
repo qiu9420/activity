@@ -37,7 +37,6 @@ class ActivityDemoApplicationTests {
         System.out.println(processEngine);
     }
 
-
     /**
      * 测试部署流程
      */
@@ -47,7 +46,6 @@ class ActivityDemoApplicationTests {
                 .addClasspathResource("bpmn/myEvection.png").key("myEvection").name("出差申请流程").deploy();
         log.info("流程部署Id：{}, 流程部署key：{}", deployment.getId(), deployment.getKey());
     }
-
 
     /**
      * 启动出差申请流程
