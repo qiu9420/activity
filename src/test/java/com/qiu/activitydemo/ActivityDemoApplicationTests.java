@@ -10,7 +10,10 @@ import org.activiti.engine.task.Task;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @SpringBootTest
 @Slf4j
@@ -121,5 +124,43 @@ class ActivityDemoApplicationTests {
             log.info("流程实例：{} 已挂起", processInstanceId);
         }
     }
+
+
+    /**
+     * 启动流程时，可为其添加业务编号
+     */
+    @Test
+    public void addBusinessKey() {
+        ProcessInstance processInstance = runtimeService.startProcessInstanceByKey("myEvection", "10001");
+        log.info("业务编号（businessKey）：{}", processInstance.getBusinessKey());
+    }
+
+    /**
+     * 部署通过流程变量配置任务负责人
+     */
+    @Test
+    public void deploymentTest() {
+        Deployment deployment = repositoryService.createDeployment().addClasspathResource("bpmn/myEvection-UELValue.bpmn")
+                .addClasspathResource("bpmn/myEvection-UELValue.png").name("出差申请流程-流程变量指定任务负责人")
+                .key("myEvection-UELValue").deploy();
+        log.info("deploymentId：{}", deployment.getId());
+    }
+
+    /**
+     * 通过表达式分配任务负责人
+     */
+    @Test
+    public void assigneeUELTest() {
+        // 通过Map封装流程变量
+        Map<String, Object> assigneeMap = new HashMap<>();
+        assigneeMap.put("assignee0", "张三");
+        assigneeMap.put("assignee1", "李经理");
+        assigneeMap.put("assignee2", "王总经理");
+        assigneeMap.put("assignee3", "赵财务");
+        // 启动流程时，为其设置流程变量
+        runtimeService.startProcessInstanceByKey("myEvection-UELValue", assigneeMap);
+    }
+
+
 
 }
