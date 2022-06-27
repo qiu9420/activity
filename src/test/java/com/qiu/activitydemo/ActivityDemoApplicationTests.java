@@ -161,6 +161,4 @@ class ActivityDemoApplicationTests {
         runtimeService.startProcessInstanceByKey("myEvection-UELValue", assigneeMap);
     }
 
-
-
 }
