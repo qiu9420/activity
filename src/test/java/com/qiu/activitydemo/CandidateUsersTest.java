@@ -27,7 +27,6 @@ public class CandidateUsersTest {
     @Autowired
     private TaskService taskService;
 
-
     @Test
     public void deploymentTest() {
         // 部署流程
