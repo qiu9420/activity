@@ -36,7 +36,6 @@ public class CandidateUsersTest {
         log.info("流程部署Id：{}", deployment.getId());
     }
 
-
     @Test
     public void startProcessByKey() {
         Map<String, Object> params = new HashMap<>();
