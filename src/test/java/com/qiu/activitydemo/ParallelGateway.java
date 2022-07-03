@@ -93,6 +93,7 @@ public class ParallelGateway {
             taskService.complete(task.getId());
         }
     }
+
     /**
      * 完成总经理审批任务
      */
@@ -103,8 +104,5 @@ public class ParallelGateway {
             taskService.complete(task.getId());
         }
     }
-
-
-
 
 }
