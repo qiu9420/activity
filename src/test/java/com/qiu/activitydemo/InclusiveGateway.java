@@ -83,4 +83,5 @@ public class InclusiveGateway {
             taskService.complete(task.getId());
         }
     }
+
 }
