@@ -76,4 +76,16 @@ public class CandidateUsersTest {
         }
     }
 
+    /**
+     * 拾取任务后归还任务
+     */
+    @Test
+    public void setAssigneeToGroupTask() {
+        String userName = "王五";
+        Task task = taskService.createTaskQuery().taskId("5002").taskAssignee(userName).singleResult();
+        if (task != null) {
+            taskService.setAssignee(task.getId(), null);
+        }
+    }
+
 }
